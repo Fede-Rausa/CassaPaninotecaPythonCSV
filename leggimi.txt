@@ -1,0 +1,45 @@
+CASSA EXCEL-CSV PER LA PANINOTECA: ISTRUZIONI
+
+file da utilizzare (nella stessa cartella):
+-cassaCSV.exe
+-impostazioniCassa.csv (da preparare secondo le istruzioni sotto)
+-datiCassa.csv (generato e aggiornato automaticamente all'avvio di cassaCSV.exe)
+
+prerequisiti e setup: 
+Il file cassaCSV.exe è la cassa. 
+
+Per poterla utilizzare è necessario che nella stessa cartella si trovi un file denominato "impostazioniCassa.csv"
+con al suo interno 4 colonne (con nomi delle colonne e tipologie di variabili da rispettare):
+-prodotti (stringa) : i nomi dei piatti / panini / bibite venduti
+-prezzi (numero) : i prezzi dei piatti
+-panino_menu (bool - T/F): se vero, è inseribile in un menu e verrà utilizzato per calcolare automaticamente lo sconto
+-contorno_menu (bool - T/F): se vero, è inseribile in un menu e verrà utilizzato per calcolare automaticamente lo sconto
+
+Inoltre, per poter modificare datiCassa.csv è necessario che datiCassa.csv non sia aperto da un altra applicazione (quindi Excel resta chiuso)
+
+ATTENZIONE_1: 
+se i file datiCassa.csv e impostazioniCassa.csv vengono rinominati o spostati in una cartella diversa cassaCSV.exe incontra errore
+ATTENZIONE_2:
+se si volessero cambiare le impostazioni nel file impostazioniCassa.csv DOPO aver già registrato alcuni ordini
+nel file cassaCSV.exe, è necessario rinominare o spostare cassaCSV.exe, altrimenti si rischia di 
+.perdere i dati salvati in datiCassa.csv
+.incontrare errore
+
+contenuto cassaCSV.exe:
+Nella pagina CASSA si ha il form per registrare un ordine del cliente sul file datiCassa.csv
+Nella pagina GRAFICI si ha il report delle vendite complessive, per come risulta da datiCassa.csv
+
+
+Calcolo dello sconto:
+Per semplicità, lo sconto del menu si assume essere sempre pari a 1€ per ogni coppia panino-contorno _menu
+e se si vuole inserire uno sconto diverso da questo criterio lo si può inserire direttamente in sconto speciale
+per cui 
+sconto = sconto totale = min(q_panini_menu, q_contorni_menu) + sconto speciale
+
+Se non si vuole inserire questo tipo di sconto, è sufficiente 
+porre sempre uguali a False le colonne panino_menu e contorno_menu 
+(o anche una sola, in quanto min(0,a) = 0 per ogni valore di a )
+
+Se si vuole adottare un qualsiasi altro sconto, si può utilizzare la voce sconto special
+
+

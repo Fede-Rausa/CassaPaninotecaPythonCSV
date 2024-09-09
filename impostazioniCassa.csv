@@ -1,0 +1,8 @@
+prodotti;prezzi;panino_menu;contorno_menu
+salamella;4;TRUE;FALSE
+speck;3;TRUE;FALSE
+vegetariano;2;TRUE;FALSE
+caprese;3,5;TRUE;FALSE
+patatine;2,2;FALSE;TRUE
+piadina;2,4;FALSE;FALSE
+panzerotto;6;FALSE;TRUE
